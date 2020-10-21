@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import colors from '../../styles/variables/colors.json';
+import radiusTypes from '../../styles/variables/radius.json';
 import weights from '../../styles/variables/weight.json';
 import {ButtonTypography} from '../Typography';
 
@@ -56,7 +57,7 @@ Button.propTypes = {
   variant: PropTypes.oneOf(['filled', 'outlined']),
   color: PropTypes.oneOf(colors),
   fontColor: PropTypes.oneOf(colors),
-  radius: PropTypes.oneOf([false, 'default', 'alternative']),
+  radius: PropTypes.oneOf(radiusTypes),
   rightIcon: PropTypes.oneOf([PropTypes.object, PropTypes.element]),
   size: PropTypes.oneOf([1, 2, 3, 4, 5]),
   style: PropTypes.object,

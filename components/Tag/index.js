@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import colors from '../../styles/variables/colors.json';
+import radiusTypes from '../../styles/variables/radius.json';
 import weights from '../../styles/variables/weight.json';
 import {TagTypography} from '../Typography';
 
@@ -33,7 +34,7 @@ Tag.propTypes = {
   content: PropTypes.string.isRequired,
   color: PropTypes.oneOf(colors),
   onClick: PropTypes.func.isRequired,
-  radius: PropTypes.oneOf([false, 'default', 'alternative']),
+  radius: PropTypes.oneOf(radiusTypes),
   weight: PropTypes.oneOf(weights)
 };
 

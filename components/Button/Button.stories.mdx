@@ -1,16 +1,10 @@
 import { ArgsTable, Meta } from '@storybook/addon-docs/blocks';
 import Button from './index';
-import {CodeBlock} from 'prensa-docs';
+import {CodeBlock, Space} from 'prensa-docs';
 import DownloadIcon from '../../icons/ArrowCircleDownBlack18Dp';
 import ArrowRightIcon from '../../icons/IcArrowForward';
 
 export const Template = (args) => <Button {...args} />;
-
-export const Space = props => {
-  const unit = 8;
-  const {size} = props;
-  return <div style={{marginTop: size * unit}} />
-};
 
 <Meta title="Components/Button" component={Button} />
 
@@ -60,9 +54,9 @@ O componente possui acesso a toda a família de cores do design system. Usamos a
 <Space size={6} />
 
 ### Border radius
-O componente possui acesso a família de variações para o css border-radius. Podemos alternar entre um botão quadrado e dois níveis de radius. A props é `radius` e as opções são `false`, `default` e `alternative`.
+O componente possui acesso a família de variações para o css border-radius. Podemos alternar entre um botão quadrado e dois níveis de radius. A props é `radius` e as opções são `none`, `default` e `alternative`.
 
-<Button variant="filled" color='primary-1' radius={false} style={{marginRight: 8}}>Lorem</Button>
+<Button variant="filled" color='primary-1' radius='none' style={{marginRight: 8}}>Lorem</Button>
 <Button variant="filled" color='primary-1' radius='default' style={{marginRight: 8}}>Lorem</Button>
 <Button variant="filled" color='primary-1' radius='alternative' style={{marginRight: 8}}>Lorem</Button>
 
@@ -70,7 +64,7 @@ O componente possui acesso a família de variações para o css border-radius. P
 
 <pre>
   <CodeBlock children={`
-  <Button variant="filled" color="primary-1" radius={false}>Lorem</Button>
+  <Button variant="filled" color="primary-1" radius='none'>Lorem</Button>
   <Button variant="outlined" color="primary-1" radius='default'>Lorem</Button>
   <Button variant="outlined" color="primary-1" radius='alternative'>Lorem</Button>
   `}/>

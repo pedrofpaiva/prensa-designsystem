@@ -1,6 +1,7 @@
 $border-radius-none: 0px;
 $border-radius-default: 3px;
 $border-radius-alternative: 5px;
+$border-radius-round: 20px;
 
 %family-radius {
   &.radius-false {
@@ -11,5 +12,8 @@ $border-radius-alternative: 5px;
   }
   &.radius-alternative {
     border-radius: $border-radius-alternative;
+  }
+  &.radius-round {
+    border-radius: $border-radius-round;
   }
 }
