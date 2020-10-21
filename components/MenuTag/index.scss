@@ -1,0 +1,14 @@
+@use '../../styles' as *;
+
+.Prensa-MenuTag-root {
+  border-width: 1px;
+  border-style: solid;
+  @include w(max-content);
+  @extend %family-radius;
+  @extend %family-border-colors;
+  @extend %weight-family;
+  a {
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+}

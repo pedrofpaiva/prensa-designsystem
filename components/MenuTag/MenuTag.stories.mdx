@@ -1,0 +1,11 @@
+import { ArgsTable, Meta } from '@storybook/addon-docs/blocks';
+import MenuTag from './index';
+
+<Meta title="Components/MenuTag" component={MenuTag} />
+
+<div style={{display: 'flex'}}>
+  <MenuTag path='linkToPath' radius='round' color='editorial-2'>Testando</MenuTag>
+  <MenuTag path='linkToPath' color='editorial-2'>Testando</MenuTag>
+</div>
+
+<ArgsTable of={MenuTag} />
