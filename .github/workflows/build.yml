@@ -24,7 +24,7 @@ jobs:
           git config --global user.email "giovanni@xproglabs.com"
           git config pull.ff only
           git fetch origin
-          git pull origin develop --allow-unrelated-histories
+          git pull origin develop
           git checkout develop
           git branch temp
 
