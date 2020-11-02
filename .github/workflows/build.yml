@@ -7,24 +7,27 @@ jobs:
     name: Build Prensa SCSS and JS
     runs-on: ubuntu-latest
     steps:
-      - name: Fetch origin
-        run: git fetch origin
+          
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
           
       - name: Checkout source Git branch
         uses: actions/checkout@v2
         with:
           ref: ${{ github.ref }}
-          
-      - name: Pull modifications
-        run: git pull
+        
+      - name: Git config and merge
+        run: |
+          git config --global user.name "Giovanni"
+          git config --global user.email "giovanni@xproglabs.com"
+          git config pull.ff only
+          git checkout develop
+          git branch temp
 
-      - name: Try to merge develop
-        run: git merge develop
-          
-      - name: Set Node.js version ${{ matrix.node_version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node_version }}
+      - name: Check for merge
+        run: git merge ${GITHUB_REF##*/} -m "merge"
 
       - name: Install packages
         run: npm install
