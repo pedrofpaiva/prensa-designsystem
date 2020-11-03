@@ -1,0 +1,48 @@
+import {Meta} from '@storybook/addon-docs/blocks';
+import {CodeBlock, Space} from 'prensa-docs'
+
+<Meta title="Rules/Mixins" component={Meta} />
+
+# MIXINS
+
+<Space size={4} />
+
+Um mixin é uma abstração proposta pelo SCSS que torna mais rápida a escrita do código de estilo. Trabalha com a mesma lógica da função no JavaScript, uma execução com parâmetros e um retorno de conteúdo. Nesta página podemos encontrar a lista com todos os mixins utilizados para a construção do prensa.
+
+<CodeBlock language='scss'>
+  {`
+    @mixin w($n) { width: $n; }
+    @mixin h($n) { height: $n; }
+    @mixin mw($n) { max-width: $n; }
+    @mixin mh($n) { max-height: $n; }
+    @mixin miw($n) { min-width: $n; }
+    @mixin mih($n) { min-height: $n; }
+    @mixin fg($n) { flex-grow: $n }
+    @mixin ai($n) { align-items: $n; }
+    @mixin jc($n) { justify-content: $n; }
+    @mixin pos($n) { position: $n; }
+    @mixin post($n) { top: $n; }
+    @mixin posb($n) { bottom: $n; }
+    @mixin posl($n) { left: $n; }
+    @mixin posr($n) { right: $n; }
+    @mixin mt($n) { margin-top: $n; }
+    @mixin mb($n) { margin-bottom: $n; }
+    @mixin ml($n) { margin-left: $n; }
+    @mixin mr($n) { margin-right: $n; }
+    @mixin pt($n) { padding-top: $n; }
+    @mixin pb($n) { padding-bottom: $n; }
+    @mixin pl($n) { padding-left: $n; }
+    @mixin pr($n) { padding-right: $n; }
+    @mixin bg($n) { background-color: $n; }
+    @mixin fc($n) { color: $n; }
+    @mixin ff($n) { font-family: $n; }
+    @mixin fs($n) { font-size: $n; }
+    @mixin fw($n) { font-weight: $n; }
+    @mixin lh($n) { line-height: $n; }
+    @mixin ls($n) { letter-spacing: $n; }
+    @mixin td($n) { text-decoration: $n; }
+    @mixin ta($n) { text-align: $n; }
+    @mixin tt($n) { text-transform: $n; }
+    @mixin r($n) { border-radius: $n; }
+  `}
+</CodeBlock>

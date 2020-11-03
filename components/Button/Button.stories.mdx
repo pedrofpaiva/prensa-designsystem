@@ -1,16 +1,10 @@
 import { ArgsTable, Meta } from '@storybook/addon-docs/blocks';
 import Button from './index';
-import {CodeBlock} from 'prensa-docs';
+import {CodeBlock, Space} from 'prensa-docs';
 import DownloadIcon from '../../icons/ArrowCircleDownBlack18Dp';
 import ArrowRightIcon from '../../icons/IcArrowForward';
 
 export const Template = (args) => <Button {...args} />;
-
-export const Space = props => {
-  const unit = 8;
-  const {size} = props;
-  return <div style={{marginTop: size * unit}} />
-};
 
 <Meta title="Components/Button" component={Button} />
 

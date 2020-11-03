@@ -1,0 +1,202 @@
+import {Meta} from '@storybook/addon-docs/blocks';
+import {CodeBlock, Space} from 'prensa-docs'
+
+<Meta title="Rules/Families" component={Meta} />
+
+# FAMÍLIAS
+
+<Space size={5} />
+
+### Como funcionam as famílias
+
+O prensa está dividido em famílias globais e famílias específicas. Uma família é montada no SCSS com tokens e propriedades css e executa a suas possíveis configurações utilizando as `props` de um componente no javascript. Cada **família** contém seu conjunto de **tokens** que carregam os valores do css. As famílias globais estão disponíveis em SCSS e em formato JSON para serem utilizadas em qualquer componente do projeto. Já as específicas são famílias que ainda não foram desenvolvidas o suficiente ou pertencem a contextos específicos - um bom exemplo é a família de tamanhos de botão, que pertence somente ao componente Button.
+
+O **ponto de encontro** entre componentes e famílias é através do seu `class` onde entra a atuação do JavaScript. Cada class irá corresponder a um conjunto de estilos, ou uma família. Um class no prensa é montado através de um conjunto de props de um componente e tem a possibilidade de um sufixo customizado para casos específicos.
+
+Abaixo temos como exemplo o class do componente Button
+
+<pre>
+  <CodeBlock
+    language="scss"
+    children={
+    `
+    .Prensa-Button-root {
+      @include px($space-size-2);
+      @include miw(max-content);
+      @extend %family-buttonSize;
+      @extend %family-radius;
+      cursor: pointer;
+      border: unset;
+      text-transform: uppercase;
+    }
+    `
+    }
+  />
+</pre>
+
+<Space size={5} />
+
+### Construção das classes
+
+Sempre trabalharemos com classes no padrão de escrita do Prensa:
+
+**`Prensa- + ${componente}- + ${prefixo}- + ${famílias} + ${sufixo}`**
+
+**`Prensa-Button-root color-primary-1`**
+
+> (produto) Prensa: identifica o design system na DOM.
+
+> (componente) Button: nome do componente sempre com a letra maíuscula
+
+> (prefixo) root: é referente ao elemento do componente que acessamos. Pode ser root (raíz), ou icon por exemplo
+
+> color-primary-1: é referente a cor escolhida da família de cores
+
+No SCSS o valor lido no className será interpretado na família de cores, como podemos ver abaixo. O `class` que executaria o trecho de código SCSS abaixo seria `Prensa-Button-root color-primary-1`, com as `props` sendo **`color='primary-1'`** e os outros valores default
+
+<CodeBlock language='scss'>
+  {`
+    %family-background-colors {
+      &.color-primary-1 {
+        background-color: $color-primary-1;
+      }
+    }
+  `}
+</CodeBlock>
+
+<Space size={5} />
+
+### Famílias disponíveis para uso
+
+No prensa hoje existem as seguintes famílias globais [disponíveis para uso no SCSS + JSON]:
+
+> Família de cores
+
+> Família de border-radius
+
+> Família de font-weight
+
+<div style={{width: '100%', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between'}}>
+  <div style={{width: '30%'}}>
+    <p>Opções para cores</p>
+    <CodeBlock>
+    {`
+    [
+      "primary-1",
+      "primary-2",
+      "primary-3",
+      "secondary-1",
+      "secondary-2",
+      "secondary-3",
+      "product-1",
+      "product-2",
+      "product-3",
+      "product-4",
+      "product-5",
+      "editorial-1",
+      "editorial-2",
+      "editorial-3",
+      "editorial-4",
+      "editorial-5",
+      "black",
+      "neutral-1",
+      "neutral-2",
+      "neutral-3",
+      "neutral-4",
+      "neutral-5",
+      "neutral-6",
+      "neutral-7",
+      "neutral-8",
+      "neutral-9",
+      "neutral-10",
+      "neutral-11",
+      "white",
+      "ads",
+      "success-1",
+      "success-2",
+      "success-3",
+      "error-1",
+      "error-2",
+      "error-3"
+    ]
+    `}
+    </CodeBlock>
+  </div>
+  <div style={{width: '30%'}}>
+    <p>Opções para font-weight</p>
+    <CodeBlock>
+    {`
+    [
+      "thin",
+      "light",
+      "regular",
+      "medium",
+      "bold",
+      "italic"
+    ]
+    `}
+    </CodeBlock>
+  </div>
+  <div style={{width: '30%'}}>
+    <p>Opções para border-radius</p>
+    <CodeBlock>
+    {`
+    [
+      "none",
+      "default",
+      "alternative",
+    ]
+    `}
+    </CodeBlock>
+  </div>
+</div>
+
+Para acessá-las basta usar as respectivas props nos componentes que as tem disponíveis, são elas `color`, `radius` e `weight`. Em alguns casos, essas props podem estar nomeadas de forma diferente, o que estará documentado no componente específico - `fontColor` é um bom exemplo disso. No componente NewsTitle a props anterior corresponde a `color` na raíz.
+
+Também existem as famílias que ainda não estão tipadas (disponíveis somente no SCSS), que são:
+
+> Família de tipografias
+
+> Família de espaçamentos
+
+<div style={{width: '100%', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between'}}>
+  <div style={{width: '48%'}}>
+    <p>Opções para tipografia (somente SCSS)</p>
+    <CodeBlock language='scss'>
+    {`
+    $font-primary: 'Work Sans' !default;
+    $font-secondary: 'Merriweather' !default;
+    $font-tertiary: 'Arvo' !default;
+    $font-size-1: 12px !default;
+    $font-size-2: 14px !default;
+    $font-size-3: 16px !default;
+    $font-size-4: 18px !default;
+    $font-size-5: 20px !default;
+    $font-size-6: 22px !default;
+    $font-size-7: 38px !default;
+    $font-size-8: 42px !default;
+    $font-size-9: 62px !default;
+    `}
+    </CodeBlock>
+  </div>
+  <div style={{width: '48%'}}>
+    <p>Opções para espaçamento (somente SCSS)</p>
+    <CodeBlock>
+    {`
+    $space-unit: 8px !default;
+    $size-pixel: 24px;
+    $sizepix-it: (0 1 2 3 4 5 6 7 8 9 10);
+    $space-size-1: calc(#{$space-unit} * 1);
+    $space-size-2: calc(#{$space-unit} * 2);
+    $space-size-3: calc(#{$space-unit} * 3);
+    $space-size-4: calc(#{$space-unit} * 4);
+    $space-size-5: calc(#{$space-unit} * 5);
+    $space-size-6: calc(#{$space-unit} * 6);
+    $space-size-7: calc(#{$space-unit} * 7);
+    $space-size-8: calc(#{$space-unit} * 8);
+    $space-size-9: calc(#{$space-unit} * 9);
+    $space-size-10: calc(#{$space-unit} * 10);
+    `}
+    </CodeBlock>
+  </div>
+</div>
