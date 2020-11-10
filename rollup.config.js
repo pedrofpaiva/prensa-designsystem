@@ -92,5 +92,49 @@ export default [
       resolve(),
       sass(),
     ]
+  },
+  {
+    input: 'styled/index.js',
+    external: ['react', 'prop-types', 'sass', 'lodash', 'classnames', 'html2json'],
+    output: [
+      {
+        file: 'styled.js',
+        format: 'cjs',
+        globals: {
+          react: 'React'
+        },
+        name: 'prensa/styled'
+      }
+    ],
+    plugins: [ 
+      babel({
+        exclude: 'example/**, node_modules/**, stories/**, .github/**, .storybook/**, mockup/**, utils/**, icons/assets',
+      }),
+      json(),
+      resolve(),
+      sass(),
+    ]
+  },
+  {
+    input: 'tokens/index.js',
+    external: ['react', 'prop-types', 'sass', 'lodash', 'classnames', 'html2json'],
+    output: [
+      {
+        file: 'tokens.js',
+        format: 'cjs',
+        globals: {
+          react: 'React'
+        },
+        name: 'prensa/tokens'
+      }
+    ],
+    plugins: [ 
+      babel({
+        exclude: 'example/**, node_modules/**, stories/**, .github/**, .storybook/**, mockup/**, utils/**, icons/assets',
+      }),
+      json(),
+      resolve(),
+      sass(),
+    ]
   }
 ];

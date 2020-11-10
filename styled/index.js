@@ -1,0 +1,1 @@
+export {colorParser as colorParser} from './colorParser';
