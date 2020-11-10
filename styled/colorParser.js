@@ -1,12 +1,12 @@
-import {get} from 'lodash';
+import {find} from 'lodash';
 
-import {colors} from '../tokens';
+import {colors} from '../tokens/index.js';
 
 export const colorParser = data => {
-  const result = get(colors, data);
+  const result = find(colors, {token: data});
   if (!result) {
     console.error('Não foi encontrado o token de cor correspondente.');
     return null;
   }
-  return result;
+  return result.value;
 };
