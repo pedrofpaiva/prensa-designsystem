@@ -17,8 +17,11 @@ jobs:
         with:
           node-version: ${{ matrix.node_version }}
 
-      - name: Install packages
-        run: npm install
+      - name: Install packages and build
+        run: |
+          ls -l
+          npm install
+          npm run build
           
       - name: Create destination for compiled CSS
         run: mkdir -vp /tmp/xprog-designsystem/css
@@ -35,16 +38,11 @@ jobs:
           source: styles/router.scss
           destination: /tmp/xprog-designsystem/css/router.css
           
-      - name: Build
-        run: npm run build
-          
       - name: Slack notifcation theme
         uses: 8398a7/action-slack@v3
         with:
           status: ${{ job.status }}
-          author_name: ':small_blue_diamond: Build SCSS theme'
-          icon_emoji: 'warning'
-          text: Build SCSS theme ${{ job.status }}
+          text: Build Prensa ${{ job.status }}
           fields: commit, message, author
         env:
           GITHUB_TOKEN: ${{ github.token }}
