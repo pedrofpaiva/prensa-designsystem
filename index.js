@@ -1620,6 +1620,11 @@ var handleFontFamily = function handleFontFamily(props) {
   return theme[value];
 };
 
+var handleFontSize = function handleFontSize(props) {
+  var value = lodash.get(props, '$fontSize', '14px');
+  return value;
+};
+
 var handleBorderRadius = function handleBorderRadius(props) {
   var theme = lodash.get(props, 'theme.radius');
   var value = lodash.get(props, '$radius');
@@ -1650,7 +1655,7 @@ var handleFocusedColor = function handleFocusedColor(props) {
   return theme.activeColor;
 };
 
-var Input$1 = styled__default['default'].input(_templateObject$3 || (_templateObject$3 = _taggedTemplateLiteral(["\n  width: calc(100% - 16px);\n  height: calc(100% - 2px);\n  padding-left: 8px;\n  padding-right: 8px;\n  font-size: 14px;\n  font-weight: 400;\n  font-family: ", ";\n  color: ", ";\n  border-radius: ", ";\n  border-color: unset;\n  border-width: unset;\n  border-style: unset;\n  &:focus {\n    outline-color: unset;\n    outline-width: unset;\n    outline-style: none;\n  }\n"])), handleFontFamily, handleColor, handleBorderRadius);
+var Input$1 = styled__default['default'].input(_templateObject$3 || (_templateObject$3 = _taggedTemplateLiteral(["\n  width: calc(100% - 16px);\n  height: calc(100% - 2px);\n  padding-left: 8px;\n  padding-right: 8px;\n  font-size: ", ";\n  font-weight: 400;\n  font-family: ", ";\n  color: ", ";\n  border-radius: ", ";\n  border-color: unset;\n  border-width: unset;\n  border-style: unset;\n  &:focus {\n    outline-color: unset;\n    outline-width: unset;\n    outline-style: none;\n  }\n"])), handleFontSize, handleFontFamily, handleColor, handleBorderRadius);
 var InputContainer = styled__default['default'].div(_templateObject2$2 || (_templateObject2$2 = _taggedTemplateLiteral(["\n  background-color: white;\n  width: 100%;\n  height: 40px;\n  box-shadow: ", ";\n  display: flex;\n  align-items: center;\n  border-radius: ", ";\n  &:focus-within {\n    box-shadow: ", ";\n  }\n"])), function (props) {
   return "0 0 0 1px ".concat(handleInputColor(props));
 }, handleBorderRadius, function (props) {
