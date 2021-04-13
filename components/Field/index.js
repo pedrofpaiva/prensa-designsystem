@@ -19,6 +19,7 @@ const Field = props => {
     styledMessage,
     styledInput,
     styledField,
+    styledRoot,
     onChange,
     onIconClick,
     type,
@@ -56,11 +57,15 @@ const Field = props => {
   };
 
   const styledInputDefaultProps = {
-    $fontSize: get(styledInput, 'fontSize', '14px'),
-    $fontWeight: get(styledInput, 'fontWeight', 400),
-    $fontFamily: get(styledInput, 'fontFamily', 'secondary'),
     $color: get(styledInput, 'color', 'neutral5'),
     $radius: get(styledInput, 'radius', 'default'),
+  };
+
+  const styledRootDefaultProps = {
+    $fontSize: get(styledRoot, 'fontSize', '14px'),
+    $fontWeight: get(styledRoot, 'fontWeight', 400),
+    $fontFamily: get(styledRoot, 'fontFamily', 'secondary'),
+    $color: get(styledRoot, 'color', 'neutral2'),
   };
 
   const styledFieldDefaultProps = {
@@ -105,7 +110,7 @@ const Field = props => {
           mask={mask}
           placeholder={placeholder}
           validation={validation}
-          {...styledInputDefaultProps}
+          {...styledRootDefaultProps}
         >
           <Input />
         </InputMask>
@@ -149,14 +154,20 @@ Field.propTypes = {
     ml: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   }),
   /**
-   * Props de estilo para o elemento input HTML
+   * Props de estilo para o elemento Container
    */
   styledInput: PropTypes.shape({
+    color: PropTypes.oneOf(colorProps),
+    radius: PropTypes.oneOf(['unset', 'default', 'alternative'])
+  }),
+  /**
+   * Props de estilo para o elemento raiz
+   */
+  styledRoot: PropTypes.shape({
     fontSize: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     fontWeight: PropTypes.number,
     fontFamily: PropTypes.oneOf(['primary', 'secondary']),
     color: PropTypes.oneOf(colorProps),
-    radius: PropTypes.oneOf(['unset', 'default', 'alternative'])
   }),
   /**
    * Props de estilo para o componente React Field
